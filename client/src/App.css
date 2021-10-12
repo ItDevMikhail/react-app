@@ -1,0 +1,122 @@
+a {
+    color: #717784;
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 15px;
+}
+.header,
+.footer {
+    background-color: #fff;
+}
+.headerMain {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.headerMainLeft {
+    height: 60px;
+    margin-right: 10px;
+}
+.headerMainLeft img,
+.footerMainLeft img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    margin-top: 3px;
+}
+.navMenu {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    width: 100%;
+}
+.navMenuleft,
+.navMenuRight {
+    height: 100%;
+    display: flex;
+}
+.navMenuleft a,
+.navMenuRight a {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 15px;
+    font-size: 18px;
+    border-bottom: 3px solid transparent;
+}
+.navMenu a.selected {
+    border-bottom: 3px solid #ed5f2c;
+    color: #000;
+}
+.navMenu a:hover {
+    border-bottom: 3px solid #ed5f2c;
+    color: #000;
+}
+.headerTopInner {
+    background-color: #1b74fd;
+    height: 30px;
+    line-height: 30px;
+}
+.headerTopInner a {
+    color: #fff;
+    opacity: 0.7;
+}
+.headerTopInner .container {
+    display: flex;
+    justify-content: space-between;
+}
+.headerTopMenuList {
+    display: flex;
+}
+.headerTopMenuList li {
+    margin-right: 20px;
+}
+.headerTopMenuList a:hover {
+    opacity: 1;
+}
+.footer {
+    padding-top: 30px;
+}
+.footerMain {
+    display: flex;
+    justify-content: space-between;
+}
+.footerMainTop {
+    display: flex;
+    justify-content: space-between;
+}
+.footerMainCenter {
+    width: 100%;
+    margin-left: 100px;
+}
+.footerNav {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+}
+.footerMainContacts {
+    display: flex;
+    width: 600px;
+    margin-bottom: 20px;
+}
+.footerContatsIndividual {
+    margin-right: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.copyright {
+    margin-top: 30px;
+    background-color: #1b74fd;
+    color: #fff;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
