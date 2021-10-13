@@ -4,9 +4,11 @@ import { NavLink } from 'react-router-dom';
 import { ABOUT_ROUTE, LOGIN_ROUTE, USER_ROUTE } from '../utils/consts';
 import { HOMEPAGE_ROUTE } from './../utils/consts';
 import logo from '../static/logo.svg';
+import { connect } from 'react-redux';
+import { isAuthorization } from './../redux/actions';
 
-function Header() {
-  const isLogged = true;
+function Header({ isLogged, isAuthorization }: any) {
+  console.log(isLogged);
   return (
     <div className="header">
       <div className="headerTopInner">
@@ -15,7 +17,7 @@ function Header() {
             <nav className="headerTopMenu">
               <ul className="headerTopMenuList">
                 <li><NavLink to='/'>Для жизни</NavLink></li>
-                <li><NavLink to='/'>Бизнесу</NavLink></li>
+                <li><NavLink to='/'>Бизнеса</NavLink></li>
                 <li><NavLink to='/'>Инвестии</NavLink></li>
                 <li><NavLink to='/'>Акции</NavLink></li>
                 <li><NavLink to='/'>Другое</NavLink></li>
@@ -23,8 +25,8 @@ function Header() {
             </nav>
           </div>
           <div className="headerTopRight">
-          <NavLink to='/'>Отделения и банкоматы</NavLink>
-          <NavLink to='/'>Позвонить</NavLink>
+            <NavLink to='/'>Отделения и банкоматы</NavLink>
+            <NavLink to='/'>Позвонить</NavLink>
           </div>
         </div>
       </div>
@@ -40,14 +42,14 @@ function Header() {
             <NavLink activeClassName="selected" to={ABOUT_ROUTE} exact={true}>About</NavLink>
             <NavLink activeClassName="selected" to={USER_ROUTE + '/:id'} exact={true}>User page </NavLink>
           </div>
-            <div className="navMenuRight"><Tooltip title='logout' placement="bottom-start" TransitionComponent={Zoom}><NavLink activeClassName="selected" to={LOGIN_ROUTE}><span className="material-icons">
+            <div className="navMenuRight"><Tooltip title='logout' placement="bottom-start" TransitionComponent={Zoom}><NavLink activeClassName="selected" to={LOGIN_ROUTE}><span className="material-icons" onClick={()=>isAuthorization(false)}>
               logout
             </span></NavLink></Tooltip></div></nav>}
-          {!isLogged && <nav className="navMenu"><div></div><div className="navMenuRight"><Tooltip title='login' placement="bottom-start" TransitionComponent={Zoom}><NavLink activeClassName="selected" to='/login'><span className="material-icons">
+          {!isLogged && <nav className="navMenu"><div></div><div className="navMenuRight"><Tooltip title='login' placement="bottom-start" TransitionComponent={Zoom}><NavLink activeClassName="selected" to='/login' onClick={()=>isAuthorization(true)}><span className="material-icons">
             login
           </span></NavLink></Tooltip>
             <Tooltip title='Registration' placement="bottom-start" TransitionComponent={Zoom}>
-              <NavLink activeClassName="selected" to='/register'><span className="material-icons">
+              <NavLink activeClassName="selected" to='/registration'><span className="material-icons">
                 person_add_alt
               </span></NavLink></Tooltip></div></nav>}
           <div className="headerMainRight">
@@ -59,4 +61,13 @@ function Header() {
   );
 }
 
-export default Header;
+function mapStateToProps(state: any): any {
+  return {
+    isLogged: state.isLogged.isLogged
+  }
+}
+
+const mapDispatchToProps = {
+  isAuthorization
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

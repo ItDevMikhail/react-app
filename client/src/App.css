@@ -12,6 +12,9 @@ ul {
     max-width: 1200px;
     padding: 0 15px;
 }
+.header{
+    margin-bottom: 30px;
+}
 .header,
 .footer {
     background-color: #fff;
@@ -119,4 +122,24 @@ ul {
     text-align: center;
     height: 30px;
     line-height: 30px;
+}
+.register,
+.login{
+    max-width: 500px;
+    margin: 0 auto;
+}
+.registerForm,
+.loginForm{
+    padding: 20px;
+}
+.formBtn{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.formBtn a{
+    color: #558cb7;
+}
+.formBtn a:hover{
+    color: blue;
 }

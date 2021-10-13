@@ -1,9 +1,10 @@
 import React from 'react';
+import TodoList from '../components/todoList';
 
 function PersonalUserPage() {
   return (
     <div>
-      userPage
+      <TodoList/>
     </div>
   );
 }
