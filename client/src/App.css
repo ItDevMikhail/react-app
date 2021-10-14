@@ -12,10 +12,10 @@ ul {
     max-width: 1200px;
     padding: 0 15px;
 }
-.header{
+.header {
     margin-bottom: 30px;
 }
-.header,
+.headerWrapper,
 .footer {
     background-color: #fff;
 }
@@ -124,22 +124,32 @@ ul {
     line-height: 30px;
 }
 .register,
-.login{
+.login {
     max-width: 500px;
     margin: 0 auto;
 }
 .registerForm,
-.loginForm{
+.loginForm {
     padding: 20px;
 }
-.formBtn{
+.formBtn {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
 }
-.formBtn a{
+.formBtn a {
     color: #558cb7;
 }
-.formBtn a:hover{
+.formBtn a:hover {
     color: blue;
+}
+.alertMessage {
+    position: relative;
+    padding: 0.75rem 0.75rem;
+    margin: 0 auto 0.75rem;
+    border: 1px solid #f5c2c7;
+    border-radius: 0.25rem;
+    color: #842029;
+    background-color: #f8d7da;
+    max-width: 800px;
 }
