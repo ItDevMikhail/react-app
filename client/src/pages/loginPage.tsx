@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Card, CardHeader, FormGroup, Input, InputLabel, Button } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getToken, showAlert, isAuthorization } from '../redux/actions';
+import { getToken, isAuthorization, userLogin } from '../redux/actions';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { ABOUT_ROUTE } from '../utils/consts';
 import { useFetch } from '../hook/fetchHook';
+import jwt_decode from 'jwt-decode';
 
-function LoginPage({ alert }: any) {
+function LoginPage() {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const requestFetch = useFetch();
@@ -26,7 +26,11 @@ function LoginPage({ alert }: any) {
             if (data.token) {
                 dispatch(getToken(data.token));
                 dispatch(isAuthorization(true));
-                history.push(`${ABOUT_ROUTE}`)
+                const decode: any = jwt_decode(data.token, { header: false });
+                console.log(decode, typeof decode);
+                console.log(decode.login);
+                dispatch(userLogin(decode.login));
+                history.push(`${ABOUT_ROUTE}`);
             }
         } catch (error) {
             console.log(error);
@@ -72,14 +76,4 @@ function LoginPage({ alert }: any) {
     );
 }
 
-const mapDispatchToProps = {
-    showAlert
-}
-
-const mapStateToProps = (state: any) => {
-    return {
-        alert: state.app.alert
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default (LoginPage);

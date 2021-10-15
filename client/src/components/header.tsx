@@ -5,14 +5,15 @@ import { ABOUT_ROUTE, LOGIN_ROUTE, USER_ROUTE } from '../utils/consts';
 import { HOMEPAGE_ROUTE } from './../utils/consts';
 import logo from '../static/logo.svg';
 import { connect, useSelector } from 'react-redux';
-import { getToken, isAuthorization } from './../redux/actions';
+import { logoutClearState} from './../redux/actions';
+import { USER_LOGIN } from '../redux/types';
 
-function Header({ isLogged, isAuthorization }: any) {
+function Header({ isLogged, logoutClearState }: any) {
   const alert = useSelector((state: any) => state.app.alert)
+  const userId = useSelector((state: any) => state.data.login)
 
   const logoutHandler = () =>{
-    isAuthorization(false);
-    getToken('');
+    logoutClearState();
   }
   console.log(isLogged);
   return (
@@ -47,7 +48,7 @@ function Header({ isLogged, isAuthorization }: any) {
                 home
               </span></NavLink></Tooltip>
               <NavLink activeClassName="selected" to={ABOUT_ROUTE} exact={true}>About</NavLink>
-              <NavLink activeClassName="selected" to={USER_ROUTE + '/:id'} exact={true}>User page </NavLink>
+              <NavLink activeClassName="selected" to={USER_ROUTE+'/'+userId} exact={true}>User page </NavLink>
             </div>
               <div className="navMenuRight"><Tooltip title='logout' placement="bottom-start" TransitionComponent={Zoom}><NavLink activeClassName="selected" to={LOGIN_ROUTE}><span className="material-icons" onClick={logoutHandler}>
                 logout
@@ -77,6 +78,6 @@ function mapStateToProps(state: any): any {
 }
 
 const mapDispatchToProps = {
-  isAuthorization
+  logoutClearState
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

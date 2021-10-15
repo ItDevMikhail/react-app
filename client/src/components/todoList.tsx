@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserData } from '../redux/actions';
-import { FETCH_USER_DATA } from '../redux/types';
-
+// import { FETCH_USER_DATA } from '../redux/types';
 
 function TodoList() {
     const dispatch = useDispatch();

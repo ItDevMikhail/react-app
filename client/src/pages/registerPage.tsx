@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch} from 'react-redux';
 import { getToken } from '../redux/actions';
 import { isAuthorization } from './../redux/actions';
-import { useLocation } from 'react-router';
+import { useHistory } from 'react-router';
+import { ABOUT_ROUTE } from '../utils/consts';
 
 function RegisterPage() {
     const [login, setLogin] = useState('');
@@ -14,7 +15,7 @@ function RegisterPage() {
     const [password, setPassword] = useState('');
 
     const dispatch = useDispatch();
-    const location = useLocation();
+    const history = useHistory();
 
     const changeInputHandler = (e: any, setState: React.Dispatch<React.SetStateAction<string>>) => {
         setState(e.target.value);
@@ -37,6 +38,7 @@ function RegisterPage() {
             if(data.token){
                 dispatch(getToken(data.token));
                 dispatch(isAuthorization(true));
+                history.push(`${ABOUT_ROUTE}`);
             }
             console.log(data);
         } catch (error) {

@@ -14,7 +14,7 @@ export function getToken(token: string) {
     }
 }
 
-export function userLogin(login: string){
+export function userLogin(login: string) {
     return {
         type: USER_LOGIN,
         payload: login
@@ -39,7 +39,7 @@ export function showAlert(text: string) {
             type: SHOW_ALERT,
             payload: text
         })
-        setTimeout(()=>{
+        setTimeout(() => {
             dispatch(hideAlert());
         }, 3000)
     }
@@ -53,7 +53,6 @@ export function hideAlert() {
         type: HIDE_ALERT,
     }
 }
-
 export function fetchUserData() {
     return async (dispatch: any) => {
         try {
@@ -66,5 +65,13 @@ export function fetchUserData() {
             dispatch(hideSpinner());
             dispatch(showAlert('Ошибка загрузки данных'));
         }
+    }
+}
+
+export function logoutClearState() {
+    return (dispatch: any) => {
+        dispatch({ type: FETCH_USER_DATA, payload: [] });
+        dispatch({ type: TOKEN, payload: null });
+        dispatch({ type: ISAUTHORIZATION, payload: false });
     }
 }
