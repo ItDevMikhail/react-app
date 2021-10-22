@@ -9,7 +9,7 @@ export function validateMiddleware({ dispatch }: any) {
             if (action.type === USER_LOGIN) {
                 console.log(action);
                 // const found = forbidden.filter(v => action.payload.includes(v));
-                if (action.payload.length < 6) {
+                if (action.payload.length < 5) {
                     dispatch(showAlert('middleware на валидацию значения стейта user_login'));
                 } else {
                     dispatch(hideAlert());

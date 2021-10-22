@@ -3,7 +3,7 @@ import './reset.css';
 import './App.css';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
 import Footer from './components/footer';
 import Header from './components/header';
 import { BrowserRouter } from 'react-router-dom';
